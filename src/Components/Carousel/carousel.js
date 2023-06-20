@@ -3,7 +3,7 @@ import './carousel.css'
 
 function Carousle() {
   return (
-    <Carousel>
+    <Carousel className='crousel-container'>
     <Carousel.Item interval={1000}>
       <img
         className="d-block carousel-img"

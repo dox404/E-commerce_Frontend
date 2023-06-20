@@ -8,3 +8,20 @@
 h1{
     color:red;
 }
+
+.home{
+    align-items: center;
+    border:1px solid black;
+    /* text-align: center; */
+}
+.home-contents{
+    /* display:flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    border:1px solid rgb(255, 0, 0);
+    /* margin:auto; */
+    
+    
+    
+}
