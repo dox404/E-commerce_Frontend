@@ -3,8 +3,9 @@ import Profile from '../Pages/Profile/Profile'
 import Cart from '../Pages/Cart/Cart'
 import Orders from '../Pages/Orders/Orders'
 import Home from '../Pages/Home/Home'
-import Getuser from '../Pages/Getuser'
+import Products from '../Pages/Products'
 import ErrorPage from '../Components/Page404/Page404'
+import AdminAddProduct from '../Pages/Admin/AddProducts'
 
 
 const Pages = () => {
@@ -20,7 +21,8 @@ const Pages = () => {
                 <Route path='/cart' element={<Cart />}></Route>
                 <Route path='/orders' element={<Orders />}></Route>
                 <Route path='/*' element={<ErrorPage />}></Route>
-                <Route path='/getuser' element={<Getuser />}></Route>
+                <Route path='/products' element={<Products />}></Route>
+                <Route path='admin/add-products' element={<AdminAddProduct />}></Route>
 
 
             </Routes>
