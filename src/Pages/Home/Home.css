@@ -11,7 +11,7 @@ h1{
 
 .home{
     align-items: center;
-    border:1px solid black;
+    /* border:1px solid black; */
     /* text-align: center; */
 }
 .home-contents{
@@ -19,7 +19,7 @@ h1{
     /* justify-content: center; */
     /* align-items: center; */
 
-    border:1px solid rgb(255, 0, 0);
+    /* border:1px solid rgb(255, 0, 0); */
     /* margin:auto; */
     
     
