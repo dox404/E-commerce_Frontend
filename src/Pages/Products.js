@@ -4,6 +4,7 @@ import axios from '../Config/Axios'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Navbar from '../Components/Navbar/Navbar'
+// import './Products.css'
 
 const Getuser = () => {
     const [products, setProducts] = useState([])
@@ -34,9 +35,9 @@ const Getuser = () => {
           {
             products.map((value) => {
               return (
-                <div className="col-md-4 my-5 ">
-                  <Card key={value.id}>
-                    <Card.Img variant="top" src={value.image
+                <div className="col-md-4 my-3 main-card">
+                  <Card className="mt-15" key={value.id} style={{width:"20rem"}}>
+                    <Card.Img className="card-img" variant="top" src={value.image
                     } />
                     <Card.Body>
                       <Card.Title>{value.name}</Card.Title>

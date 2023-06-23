@@ -1,27 +1,4 @@
-// import React from 'react';
-// import './Navbar.css'
-// const navbar = () => {
-//     return (
-//         <>
-//             <div className='navbar'></div>
-//             <input
-//                 type="text"
-//                 placeholder="Search here"
-//             />
-//             <button>Search</button>
-//             <select>
 
-//                 <option value="fruit">Fruit</option>
-
-//                 <option value="vegetable">Vegetable</option>
-
-//                 <option value="meat">Meat</option>
-
-//             </select>
-//         </>
-//     );
-// }
-// export default navbar;
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -95,7 +72,7 @@ function NavScrollExample() {
     <div className="h-100 w-100 main">
       <Navbar expand="lg" className="bg-body-tertiary h-100">
         <Container fluid>
-          <Navbar.Brand href="#">Shoping</Navbar.Brand>
+          <Navbar.Brand href="/">Shoping.com</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Form className="d-flex searchform">
             <Form.Control

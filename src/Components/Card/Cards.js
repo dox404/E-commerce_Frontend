@@ -55,13 +55,20 @@ function BasicExample() {
               return (
                 <div className="col-md-4 my-5 ">
                   <Card key={value.id}>
-                    <Card.Img variant="top" src={value.image
+                    <Card.Img variant="top" className="custom-card-image" src={value.image
                     } />
                     <Card.Body>
                       <Card.Title>{value.title}</Card.Title>
-                      <Card.Text>
-                        {value.description}
-                      </Card.Text>
+                      {
+                        value.description.length > 100 ? <Card.Text>
+                          {value.description.substring(0,100)} <span className="ReadMore">...Read More</span>
+                        </Card.Text>
+                        :
+                        <Card.Text>
+                          {value.description}
+                        </Card.Text>
+                      }
+                      
                       <Card.Text>
                         ${value.price}
                       </Card.Text>

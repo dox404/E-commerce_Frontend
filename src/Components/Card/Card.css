@@ -4,3 +4,13 @@
 .btn-space {
     margin-right: 10px;
 }
+
+.custom-card-image {
+    height: 250px !important;
+    object-fit: contain !important;
+}
+.ReadMore {
+    cursor: pointer;
+    color:blue;
+    float: right;
+}
