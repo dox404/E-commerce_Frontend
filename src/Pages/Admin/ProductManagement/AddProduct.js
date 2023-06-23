@@ -6,7 +6,8 @@ import { useFormik } from 'formik'
 // import axios from '../../Config/Axios'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import ImagePreview from '../../Components/ImagePreview/ImagePreview';
+import ImagePreview from '../../../Components/ImagePreview/ImagePreview';
+import Navbar from '../../Admin/Navbar/Navbar'
 
 
 const AddProducts = () => {
@@ -15,6 +16,7 @@ const AddProducts = () => {
 
 
   const onSubmit = async (values) => {
+    
     const payload = {
       name: values.name,
       description: values.description,
@@ -52,9 +54,10 @@ const AddProducts = () => {
   // console.log(payload)
 
   console.log(formik)
-  console.log(formik.values.file)
+  // console.log(formik.values.file)
+  console.log(formik.values.image)
   return (<>
-
+  <Navbar/>
 
     <Form className="mx-auto my-5 w-50" method="POST" onSubmit={formik.handleSubmit}>
       <h1>Add Product</h1>
@@ -77,10 +80,10 @@ const AddProducts = () => {
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Image</Form.Label>
-        <Form.Control type="file" id="image" placeholder="URL" value={formik.values.image} onChange={(event) => {
-          formik.setFieldValue("file", event.currentTarget.files[0]);
+        <Form.Control type="file" id="image" placeholder="URL"  onChange={(event) => {
+          formik.setFieldValue("image", event.currentTarget.files[0]);
         }} />
-        {formik.values.file && <ImagePreview file={formik.values.file} />}
+        {formik.values.image && <ImagePreview file={formik.values.image} />}
       </Form.Group>
 
       {loading ? <Button className="btn btn-primary btn-lg" disabled>

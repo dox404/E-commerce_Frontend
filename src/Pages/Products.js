@@ -43,6 +43,8 @@ const Getuser = () => {
                       <Card.Title>{value.name}</Card.Title>
                       <Card.Text>
                         {value.description}
+                      </Card.Text> <Card.Text>
+                        {value._id}
                       </Card.Text>
                       <Card.Text>
                       ₹ {value.price}
