@@ -16,12 +16,14 @@ const AddProducts = () => {
 
 
   const onSubmit = async (values) => {
+    // const formData = new FormData()
+    // formData.append("file", values.image);
     
     const payload = {
       name: values.name,
       description: values.description,
       price: values.price,
-      image: values.image
+      image: formData
     }
 
     try {
