@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
-const Pagination = (props) => {
+import Pagination from 'react-bootstrap/Pagination';
+const PaginationFunc = (props) => {
     // console.log(props.showPerPage)
 
     const [counter, setCounter] = useState(1)
+
+    //here we calculater the number of butttons total/showper page
+    const numberOfButtons = Math.ceil(props.total / props.showPerPage)
+    // const [numberOfButtons, setnumberOfButtons] = useState()
     function plus() {
-        if (Math.ceil(props.total / props.showPerPage) === counter) {
+        if (numberOfButtons === counter) {
             setCounter(counter)
         } else {
             setCounter(counter + 1)
@@ -13,7 +18,6 @@ const Pagination = (props) => {
 
     }
     function minus() {
-        // setCounter(counter - 1)
         if (counter === 1) {
             setCounter(1)
         } else {
@@ -22,29 +26,33 @@ const Pagination = (props) => {
     }
     useEffect(() => {
         const value = props.showPerPage * counter
-        //     console.log("start",value-props.showPerPage)
-        //    console.log("end",value)
-        // console.log("mani")
         props.onPaginationChange(value - props.showPerPage, value)
     }, [counter])
+    console.log(Math.ceil(props.total / props.showPerPage))
+    console.log(numberOfButtons)
 
-
-
-    // function onButtonClick(type) {
-    //     if (type === "prev") {
-
-    //     } else if (type === "next"){
-
-    //     }
-    // }
     return (
         <>
-            <div>
-                <Button className="btn btn-primary" onClick={minus}>Previous</Button>
-                <Button className="btn btn-primary" onClick={plus}>Next</Button>
+            <div clasName="justyfy-content-center">
+
+                <Pagination>
+                    <Pagination.Item><Button className="btn btn-primary" onClick={minus}>Previous</Button></Pagination.Item>
+
+                    {
+                        new Array(numberOfButtons).fill("").map((element, index) => (<Pagination.Item className={`${index + 1 === counter ? "active" : null}`} onClick={()=>setCounter(index+1)}>{index + 1}</Pagination.Item>))
+                    }
+
+
+
+                    <Pagination.Item> <Button className="btn btn-primary" onClick={plus}>Next</Button></Pagination.Item>
+
+                </Pagination>
+
             </div>
         </>
     )
 }
 
-export default Pagination
+export default PaginationFunc
+
+// new Array(numberOfButtons).fill("").map((element, index) => (
