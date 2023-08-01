@@ -8,12 +8,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom';
 function NavScrollExample() {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const data = localStorage.getItem('user')
-  const ParsedData=JSON.parse(data)
+  const ParsedData = JSON.parse(data)
   console.log(data)
   const Clear = () => {
-    
+
     localStorage.clear()
     navigate('/')
 
@@ -43,23 +43,29 @@ function NavScrollExample() {
               >
 
                 {
-                  data ? <div><Nav.Link href="/">Home</Nav.Link>
+                  data ? <div style={{ "display": "inline-flex" }}><Nav.Link href="/">Home</Nav.Link>
 
                     <Nav.Link href="/products">Products</Nav.Link>
                     <Nav.Link href="/cart">Cart</Nav.Link>
-                    <Nav.Link href="/cart">{ParsedData.name}</Nav.Link>
+                    {/* <Nav.Link href="/cart"><img src={ParsedData.image}></img></Nav.Link> */}
 
-                    <NavDropdown title="User" id="navbarScrollingDropdown">
+                    <NavDropdown title={
+                      <div className="pull-left">
+                        <img className="thumbnail-image"
+                          src={ParsedData.image}
+                          alt="user pic"
+                        />
+                      </div>} id="navbarScrollingDropdown">
                       <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                       <NavDropdown.Item href="/orders">
                         Orders
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item><Button onClick={Clear}> Logout</Button>
-                       
+
                       </NavDropdown.Item>
                     </NavDropdown>
-                  </div> : <div>
+                  </div> : <div style={{ "display": "inline-flex" }}>
                     <Nav.Link href="/signup">Sign Up</Nav.Link>
                     <Nav.Link href="/login">Login</Nav.Link>
                   </div>
