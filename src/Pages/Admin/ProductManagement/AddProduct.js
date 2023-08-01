@@ -16,19 +16,25 @@ const AddProducts = () => {
 
 
   const onSubmit = async (values) => {
-    // const formData = new FormData()
-    // formData.append("file", values.image);
-    
-    const payload = {
-      name: values.name,
-      description: values.description,
-      price: values.price,
-      image: formData
-    }
+    console.log(values.image)
+    console.log(values.name)
+    const formData = new FormData()
+    formData.append("name", values.name);
+    formData.append("description", values.description);
+    formData.append("price", values.price);
+    formData.append("image", values.image);
+    // const payload = {
+    //   name: values.name,
+    //   description: values.description,
+    //   price: values.price,
+    //   image: formData
+    // }
+    // console.log(formData)
 
     try {
       setLoading(true)
-      const { data } = await axios.post('http://localhost:5050/api/v1/products/new', payload)
+      const { data } = await axios.post('http://localhost:5050/api/v1/products/new', formData)
+      navigate('/admin/all-products')
     } catch (e) {
       console.error(e)
     } finally {
@@ -37,7 +43,7 @@ const AddProducts = () => {
   }
 
 
-
+  
 
 
   const formik = useFormik({
@@ -52,15 +58,14 @@ const AddProducts = () => {
     // validationSchema: LoginSchema
 
   })
-  const payload = formik.values
+  // const payload = formik.values
   // console.log(payload)
 
-  console.log(formik)
+  // console.log(formik)
   // console.log(formik.values.file)
-  console.log(formik.values.image)
+  // console.log(formik.values.image)
   return (<>
-  <Navbar/>
-
+ 
     <Form className="mx-auto my-5 w-50" method="POST" onSubmit={formik.handleSubmit}>
       <h1>Add Product</h1>
       <Form.Group className="mb-3">

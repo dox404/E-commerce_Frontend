@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
+
 import axios from '../../../Config/Axios'
 import Pagination from '../../../Components/Pagination/Pagination';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -8,8 +10,25 @@ import ListGroup from 'react-bootstrap/ListGroup';;
 
 
 
+
 const Getuser = () => {
+  // const [searchParams] = useSearchParams();
+  // //pagination 
+  // const [meta, setMeta] = useState({
+  //   has_next: false,
+  //   current_page: 1, 
+  //   total: 0
+  // })
+  // const [filters, setFilters] = useState({
+  //   page: 1,
+  //   keyword: ''
+  // })
+
+
+
+
   const [products, setProducts] = useState([])
+
   const [showPerPage, setshowPerPage] = useState(10)
   const [pagination,setPagination] = useState({
     start:0,
@@ -20,10 +39,13 @@ const Getuser = () => {
  const onPaginationChange=(start,end)=>{
   setPagination({start:start,
     end:end})
+    
  }
 
   const getData = async () => {
-    axios.get('products').then((response) => {
+    axios.get('products'
+      // params:filters
+    ).then((response) => {
       setProducts(response.data.Products)
     }).catch((error) => {
       console.log(error);
@@ -31,7 +53,12 @@ const Getuser = () => {
   }
 
   useEffect(() => {
-
+    // console.log(searchParams.get('keyword'))
+    // const __tempFilter = {
+    //   keyword: searchParams.get('keyword') || null,
+    //   page: searchParams.get('page') || null
+    // }
+    // setFilters(__tempFilter)
     getData()
   }, [])
   // console.log(products)
