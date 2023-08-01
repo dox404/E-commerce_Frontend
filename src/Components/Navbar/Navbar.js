@@ -34,6 +34,7 @@ function NavScrollExample() {
                 
                 <Nav.Link href="/products">Products</Nav.Link>
                 <Nav.Link href="/cart">Cart</Nav.Link>
+                <Nav.Link href="/signup">Sign Up</Nav.Link>
                 <NavDropdown title="User" id="navbarScrollingDropdown">
                   <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/orders">

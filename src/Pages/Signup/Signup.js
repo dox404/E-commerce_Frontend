@@ -1,14 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import './Signup.css'
 import { useFormik } from 'formik'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ImagePreview from '../../Components/ImagePreview/ImagePreview';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 function Signup() {
+    const navigate=useNavigate()
     const [loading, setLoading] = useState(false)
-    const onSubmit = async () => {
-        console.log("hello World")
+
+
+
+    const onSubmit = async (values) => {
+        console.log(values.image)
+        console.log(values.name)
+        const formData = new FormData()
+        formData.append("name", values.name);
+        formData.append("email", values.email);
+        formData.append("password", values.password);
+        formData.append("address", values.address);
+        formData.append("image", values.image);
+
+        try {
+            setLoading(true)
+            const { data } = await axios.post('http://localhost:5050/user/signup', formData)
+            navigate('/login')
+        } catch (e) {
+            console.error(e)
+        } finally {
+            setLoading(false)
+        }
     }
+
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -71,7 +95,7 @@ function Signup() {
                     Creating ...
                 </Button> :
                     <Button className="btn btn-primary btn-lg" type="submit" >
-                        Add Product
+                        Register
                     </Button>
                 }
             </Form>
