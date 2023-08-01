@@ -6,7 +6,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Navbar.css'
+import { useNavigate } from 'react-router-dom';
 function NavScrollExample() {
+  const navigate=useNavigate()
+  const data = localStorage.getItem('user')
+  const ParsedData=JSON.parse(data)
+  console.log(data)
+  const Clear = () => {
+    
+    localStorage.clear()
+    navigate('/')
+
+  }
   return (
 
     <div className="h-100 w-100 main">
@@ -30,21 +41,30 @@ function NavScrollExample() {
 
                 navbarScroll
               >
-                <Nav.Link href="/">Home</Nav.Link>
-                
-                <Nav.Link href="/products">Products</Nav.Link>
-                <Nav.Link href="/cart">Cart</Nav.Link>
-                <Nav.Link href="/signup">Sign Up</Nav.Link>
-                <NavDropdown title="User" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="/orders">
-                    Orders
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
+
+                {
+                  data ? <div><Nav.Link href="/">Home</Nav.Link>
+
+                    <Nav.Link href="/products">Products</Nav.Link>
+                    <Nav.Link href="/cart">Cart</Nav.Link>
+                    <Nav.Link href="/cart">{ParsedData.name}</Nav.Link>
+
+                    <NavDropdown title="User" id="navbarScrollingDropdown">
+                      <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                      <NavDropdown.Item href="/orders">
+                        Orders
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item><Button onClick={Clear}> Logout</Button>
+                       
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </div> : <div>
+                    <Nav.Link href="/signup">Sign Up</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>
+                  </div>
+                }
+
 
               </Nav>
             </div>
