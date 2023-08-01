@@ -5,6 +5,8 @@ import Orders from '../Pages/Orders/Orders'
 import Home from '../Pages/Home/Home'
 import Products from '../Pages/Products'
 import ErrorPage from '../Components/Page404/Page404'
+import Login from '../Pages/Login/Login'
+import Signup from '../Pages/Signup/Signup'
 
 //admin
 import ProductManagement from '../Pages/Admin/AdminHome'
@@ -27,6 +29,8 @@ const Pages = () => {
                 <Route path='/orders' element={<Orders />}></Route>
                 <Route path='/*' element={<ErrorPage />}></Route>
                 <Route path='/products' element={<Products />}></Route>
+                <Route path='/login' element={<Login />}></Route>
+                <Route path='/signup' element={<Signup />}></Route>
                 <Route path='admin/product-management' element={<ProductManagement />}></Route>
                 <Route path='admin/add-Product' element={<AddProduct />}></Route>
                 <Route path='admin/delete-product' element={<DeleteProduct />}></Route>
