@@ -39,7 +39,7 @@ function NavScrollExample() {
               <Nav
 
 
-                navbarScroll
+         
               >
 
                 {

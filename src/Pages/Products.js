@@ -50,7 +50,7 @@ const Getuser = () => {
                       ₹ {value.price}
                       </Card.Text>
                       <Button className='btn btn-primary' href={value.url} target="_blank">Buy</Button>
-                      <Button className='btn btn-danger' href={value.url} target="_blank">Add to cart</Button>
+                      <Button className='btn btn-danger ml-10' href={value.url} target="_blank">Add to cart</Button>
                     </Card.Body>
                   </Card>
                 </div>
